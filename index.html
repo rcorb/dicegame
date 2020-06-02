@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Dice Game</title>
+    <link rel="stylesheet" href="mycss.css">
+  </head>
+
+  <body>
+    <h1>Dice Game</h1>
+    <div class="container">
+      <div class="dice">
+        <img src="images/dice6.png">
+      </div>
+      <div class ="dice">
+        <img src="images/dice6.png">
+      </div> 
+    </div>
+    <p><h2></h2></p>
+    <!-- button to refresh the page i.e. play again -->
+    <p><button name="myButton" onClick="window.location.reload();">Play Again!</button></p>
+    <footer>Project By RC</footer>
+    <script>
+      var randomNumber1 = Math.floor(Math.random() * 6) + 1; //1-6
+      var randomDiceImage = "dice" + randomNumber1 + ".png"; //dice1.png to dice6.png
+      var randomImageSource = "images/" + randomDiceImage; //images/dice1.png to images/dice6.png
+      // at this point, we have the random image source for dice 1-6
+      // to randomize the first img:
+      var image1 = document.querySelectorAll("img")[0];
+      image1.setAttribute("src", randomImageSource);
+      // to randomize the second img:
+      var randomNumber2 = Math.floor(Math.random() * 6) + 1;
+      var randomImageSource2 = "images/dice" + randomNumber2 + ".png";
+      document.querySelectorAll("img")[1].setAttribute("src", randomImageSource2);
+      // if player 1 wins
+      if (randomNumber1 > randomNumber2) {
+        document.querySelector("h2").innerHTML = "🚩 Winner: Player 1!";}
+      else if (randomNumber2 > randomNumber1) {
+        document.querySelector("h2").innerHTML = "Winner: Player 2! 🚩";}
+      else {
+        document.querySelector("h2").innerHTML = "Draw!";}
+    </script>
+</body>
+</html>
